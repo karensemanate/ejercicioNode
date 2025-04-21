@@ -1,0 +1,30 @@
+{
+  "name": "ejercicionode",
+  "version": "1.0.0",
+  "description": "\"# ejercicioNode\"",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "dev": "nodemon index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/karensemanate/ejercicioNode.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/karensemanate/ejercicioNode/issues"
+  },
+  "homepage": "https://github.com/karensemanate/ejercicioNode#readme",
+  "dependencies": {
+    "@prisma/client": "^6.6.0",
+    "express": "^5.1.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.9",
+    "prisma": "^6.6.0"
+  }
+}
