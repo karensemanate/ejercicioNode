@@ -1,0 +1,151 @@
+.pet-form-container-KYS {
+  max-width: 500px;
+  margin: 0 auto;
+  padding: 20px;
+  font-family: Arial, sans-serif;
+}
+
+.pet-form-container-KYS h1 {
+  font-size: 24px;
+  color: #ffffff;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.pet-form-KYS {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.pet-image-KYS {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid #fff;
+  display: block;
+  margin: 0 auto 20px;
+}
+
+.form-group-KYS {
+  background-color: #809db0;
+  border-radius: 9999px;
+  display: flex;
+  align-items: center;
+  padding: 0 16px;
+  min-height: 50px;
+}
+
+.form-group-content-KYS {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  justify-content: space-between; 
+}
+.form-group-KYS select {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+}
+
+
+.form-group-KYS input,
+.form-group-KYS select {
+  flex: 1;
+  background: transparent;
+  border: none;
+  outline: none;
+  font-size: 16px;
+  color: rgb(53, 52, 52);
+  padding: 12px 0;
+  text-align: left; 
+  order: 1; 
+}
+
+.icon-img-KYS {
+  width: 24px;
+  height: 24px;
+  margin-left: 12px; 
+  flex-shrink: 0;
+  order: 2; 
+}
+
+.form-group-KYS ::placeholder,
+.form-group-KYS select:invalid {
+  color: #d2dbe1;
+  opacity: 1;
+}
+
+.form-group-KYS input[type="file"] {
+  position: relative;
+  cursor: pointer;
+}
+
+.form-group-KYS input[type="file"]::-webkit-file-upload-button {
+  visibility: hidden;
+}
+
+.form-group-KYS input[type="file"]::before {
+  content: "Sin archivos seleccionados";
+  color: #d2dbe1;
+  position: absolute;
+  pointer-events: none;
+  left: 0; 
+}
+
+.form-group-KYS input[type="file"]:not(:placeholder-shown)::before {
+  content: attr(data-file-name);
+  color: white;
+}
+
+.submit-btn-KYS {
+  background-color: #4CAF50;
+  color: white;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 9999px;
+  cursor: pointer;
+  font-size: 16px;
+  margin-top: 10px;
+  width: 100%;
+  transition: background-color 0.3s;
+}
+
+.error-message-KYS {
+  color: #dc3545;
+  padding: 10px;
+  background-color: #f8d7da;
+  border: 1px solid #f5c6cb;
+  border-radius: 4px;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+
+@media (max-width: 600px) {
+  .pet-form-container-KYS {
+    padding: 15px;
+  }
+  
+  .pet-form-container-KYS h1 {
+    font-size: 20px;
+  }
+  
+  .form-group-KYS {
+    padding: 0 12px;
+    min-height: 45px;
+  }
+  
+  .icon-img-KYS {
+    width: 20px;
+    height: 20px;
+    margin-left: 8px;
+  }
+  
+  .form-group-KYS input,
+  .form-group-KYS select {
+    font-size: 14px;
+    padding: 10px 0;
+  }
+}

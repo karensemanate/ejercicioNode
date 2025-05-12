@@ -1,0 +1,75 @@
+
+.auth-page-container-KYS {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  background-image: url('../images/imgs/bg-login.svg');
+  background-size: cover;
+  background-position: center;
+  padding: 30px 20px;
+  box-sizing: border-box;
+}
+
+.login-container-KYS {
+  width: 100%;
+  max-width: 360px;
+  padding: 0; 
+  text-align: center;
+}
+
+.login-form-KYS input {
+  width: 100%;
+  padding: 6px 10px;
+  margin-bottom: 2px;
+  border: none;
+  border-radius: 30px;
+  background-color: rgba(60, 90, 120, 0.8); 
+  color: white;
+  font-size: 15px;
+  height: 44px;
+  box-sizing: border-box;
+}
+
+.login-form-KYS input::placeholder {
+  color: #ddd;
+}
+
+.login-form-KYS button {
+  width: 100%;
+  padding: 6px;
+  background-color: #1e2d3a;
+  color: white;
+  font-size: 16px;
+  border: none;
+  border-radius: 30px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  height: 44px;
+}
+
+.login-form-KYS button:hover {
+  background-color: #12202c;
+}
+
+.login-header-KYS h1,
+.login-header-KYS h2 {
+  color: white;
+}
+
+@media screen and (max-width: 480px) {
+  .auth-page-container-KYS {
+    align-items: flex-end;
+    padding-bottom: 40px;
+  }
+
+  .login-container-KYS {
+    max-width: 100%;
+  }
+
+  .login-form-KYS input,
+  .login-form-KYS button {
+    font-size: 14px;
+    height: 42px;
+  }
+}

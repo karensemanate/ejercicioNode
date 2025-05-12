@@ -1,0 +1,293 @@
+:root {
+    --primary-color: #3949ab;
+    --primary-dark: #303f9f;
+    --primary-light: #c5cae9;
+    --secondary-color: #e8eaf6;
+    --accent-color: #4db6ac;
+    --accent-dark: #26a69a;
+    --text-color: #212121;
+    --text-light: #757575;
+    --bg-color: #ffffff;
+    --card-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    --border-color: #e0e0e0;
+  }
+  
+  body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f5f5f5;
+    color: var(--text-color);
+    margin: 0;
+    padding: 0;
+  }
+  
+  .reports-container-KYS {
+    max-width: 1200px;
+    margin: 2rem auto;
+    padding: 2rem;
+    background-color: var(--bg-color);
+    border-radius: 12px;
+    box-shadow: var(--card-shadow);
+  }
+  
+  .reports-header-KYS {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+    padding-bottom: 1rem;
+    border-bottom: 2px solid var(--secondary-color);
+  }
+  
+  .reports-header-KYS h1 {
+    color: var(--primary-color);
+    font-size: 1.8rem;
+    font-weight: 600;
+    margin: 0;
+  }
+  
+  .download-btn-KYS,
+  .logout-btn-KYS {
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    padding: 0.6rem 1.2rem;
+    border-radius: 6px;
+    margin-left: 0.8rem;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+  }
+  
+  .download-btn-KYS:hover,
+  .logout-btn-KYS:hover {
+    background-color: var(--primary-dark);
+    transform: translateY(-2px);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  }
+  
+  .tabs-container-KYS {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 2rem;
+    flex-wrap: wrap;
+  }
+  
+  .tab-btn-KYS {
+    background-color: transparent;
+    border: 2px solid var(--primary-color);
+    color: var(--primary-color);
+    padding: 0.6rem 1.5rem;
+    margin: 0 0.5rem;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-weight: 500;
+  }
+  
+  .tab-btn-KYS.active,
+  .tab-btn-KYS:hover {
+    background-color: var(--primary-color);
+    color: white;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .report-content-KYS {
+    background-color: white;
+    padding: 1.5rem;
+    border-radius: 12px;
+    box-shadow: var(--card-shadow);
+  }
+  
+  .report-section-KYS {
+    margin-bottom: 2rem;
+  }
+  
+  .indicators-KYS {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+  }
+  
+  .indicator-item-KYS {
+    background-color: var(--secondary-color);
+    border-radius: 10px;
+    padding: 1.2rem;
+    text-align: center;
+    box-shadow: var(--card-shadow);
+  }
+  
+  .indicator-label-KYS {
+    display: block;
+    font-size: 0.9rem;
+    color: var(--text-light);
+    margin-bottom: 0.5rem;
+  }
+  
+  .indicator-value-KYS {
+    display: block;
+    font-size: 1.8rem;
+    font-weight: 600;
+    color: var(--primary-color);
+  }
+  
+  .chart-container-KYS {
+    margin: 1.5rem 0;
+    background-color: var(--secondary-color);
+    padding: 1.5rem;
+    border-radius: 12px;
+    box-shadow: var(--card-shadow);
+  }
+  
+  .table-section-KYS {
+    margin-top: 2rem;
+  }
+  
+  .table-title-KYS {
+    font-size: 1.2rem;
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+    text-align: center;
+  }
+  
+  .table-container-KYS {
+    overflow-x: auto;
+    margin-top: 1rem;
+    border-radius: 8px;
+    box-shadow: var(--card-shadow);
+  }
+  
+  .report-table-KYS {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.95rem;
+    background-color: white;
+  }
+  
+  .report-table-KYS th {
+    background-color: var(--primary-color);
+    color: white;
+    padding: 12px 16px;
+    text-align: left;
+    font-weight: 500;
+  }
+  
+  .report-table-KYS td {
+    padding: 12px 16px;
+    border-bottom: 1px solid var(--border-color);
+  }
+  
+  .report-table-KYS tr:nth-child(even) {
+    background-color: #f9f9f9;
+  }
+  
+  .report-table-KYS tr:hover {
+    background-color: #f1f1f1;
+  }
+  
+  .loading-container-KYS {
+    text-align: center;
+    padding: 4rem;
+    color: var(--primary-color);
+  }
+  
+  .loading-spinner-KYS {
+    border: 6px solid #f3f3f3;
+    border-top: 6px solid var(--primary-color);
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    margin: 0 auto 1.5rem;
+    animation: spin 1s linear infinite;
+  }
+  .icon-KYS {
+    width: 20px; 
+    height: 20px;
+    filter: invert(1);
+  }
+  
+
+  
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+  
+  .pdf-export {
+    background-color: #ffffff !important;
+    padding: 2rem !important;
+    max-width: 800px !important;
+    margin: 0 auto !important;
+  }
+  
+  .pdf-export .section-title-KYS {
+    color: #3949ab !important;
+    font-size: 1.5rem !important;
+    font-weight: 600 !important;
+    margin-bottom: 1.5rem !important;
+    text-align: center !important;
+    border-bottom: 2px solid #e8eaf6 !important;
+    padding-bottom: 0.5rem !important;
+  }
+  
+  .pdf-export .indicators-KYS {
+    display: flex !important;
+    justify-content: space-around !important;
+    margin-bottom: 2rem !important;
+    flex-wrap: wrap !important;
+  }
+  
+  .pdf-export .indicator-item-KYS {
+    background-color: #f5f5f5 !important;
+    border-radius: 8px !important;
+    padding: 1rem !important;
+    min-width: 200px !important;
+    text-align: center !important;
+    margin: 0.5rem !important;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1) !important;
+  }
+  
+  .pdf-export .chart-container-KYS {
+    background-color: #f9f9f9 !important;
+    border-radius: 12px !important;
+    padding: 1rem !important;
+    margin-bottom: 2rem !important;
+    border: 1px solid #e0e0e0 !important;
+  }
+  
+  .pdf-export .report-table-KYS th {
+    background-color: #3949ab !important;
+    color: white !important;
+    padding: 10px 12px !important;
+  }
+  
+  .pdf-export .report-table-KYS td {
+    padding: 10px 12px !important;
+    border: 1px solid #e0e0e0 !important;
+  }
+  
+  .legend-KYS {
+    display: flex;
+    justify-content: center;
+    margin-top: 1rem;
+    flex-wrap: wrap;
+  }
+  
+  .legend-item-KYS {
+    display: flex;
+    align-items: center;
+    margin: 0.5rem 1rem;
+    font-size: 0.9rem;
+  }
+  
+  .legend-color-KYS {
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    margin-right: 8px;
+    display: inline-block;
+  }
+
+  

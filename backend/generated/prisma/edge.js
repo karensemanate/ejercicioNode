@@ -172,7 +172,7 @@ const config = {
       "value": "prisma-client-js"
     },
     "output": {
-      "value": "C:\\Users\\USUARIO\\Desktop\\ejercicioNode\\generated\\prisma",
+      "value": "C:\\Users\\USUARIO\\Desktop\\ejercicioNode\\backend\\generated\\prisma",
       "fromEnvVar": null
     },
     "config": {
@@ -186,7 +186,7 @@ const config = {
       }
     ],
     "previewFeatures": [],
-    "sourceFilePath": "C:\\Users\\USUARIO\\Desktop\\ejercicioNode\\prisma\\schema.prisma",
+    "sourceFilePath": "C:\\Users\\USUARIO\\Desktop\\ejercicioNode\\backend\\prisma\\schema.prisma",
     "isCustomOutput": true
   },
   "relativeEnvPaths": {
@@ -200,11 +200,12 @@ const config = {
     "db"
   ],
   "activeProvider": "mysql",
+  "postinstall": false,
   "inlineDatasources": {
     "db": {
       "url": {
         "fromEnvVar": "DATABASE_URL",
-        "value": "mysql://root:@localhost:3306/mascota"
+        "value": null
       }
     }
   },

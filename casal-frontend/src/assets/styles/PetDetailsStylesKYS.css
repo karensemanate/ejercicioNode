@@ -1,0 +1,103 @@
+.pet-details-header-KYS {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+  }
+  
+  .header-controls-KYS {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+  }
+  
+  .icon-button-KYS {
+    background: transparent;
+    border: none;
+    padding: 0.5rem;
+  }
+  
+  .icon-img-KYS {
+    width: 24px;
+    height: 24px;
+  }
+  
+  .header-title-KYS {
+    flex-grow: 1;
+    text-align: center;
+    color: white;
+    font-size: 1.5rem;
+    font-weight: bold;
+  }
+  
+
+
+
+.pet-details-content-KYS {
+    display: flex;
+    flex-direction: column;
+    gap: 12px; 
+    margin-bottom: 20px;
+  }
+  
+  .detail-row-KYS {
+    display: flex;
+    border-radius: 9999px;
+    overflow: hidden;
+    background-color: #a5b9d4;
+    min-width: 200px;
+    height: 40px;
+  }
+  
+  .detail-row-KYS label {
+    background-color: #8da3c2;
+    color: white;
+    font-weight: bold;
+    padding: 10px 14px;
+    display: flex;
+    align-items: center;
+    white-space: nowrap;
+    width: 70px;
+    justify-content: flex-end;
+  }
+  
+  
+  .detail-value-KYS {
+    flex: 1;
+    padding: 10px 14px;
+    display: flex;
+    align-items: center;
+    color: #2e3b4e;
+    background-color: transparent;
+  }
+  
+  .pet-details-footer-KYS {
+    display: flex;
+    justify-content: flex-start;
+    margin-top: 20px;
+  }
+  
+  .back-btn-KYS {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background-color: #a5b9d4;
+    color: #2e3b4e;
+    font-weight: bold;
+    padding: 10px 20px;
+    border-radius: 9999px;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.2s;
+  }
+  
+  .back-btn-KYS:hover {
+    background-color: #8da3c2;
+  }
+  
+  .icon-img-KYS {
+    width: 20px;
+    height: 20px;
+  }
+  

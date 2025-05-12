@@ -1,0 +1,1331 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="../../public/logo.png" />
+    <title>Mascotas</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f5f5f5;
+            margin: 0;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        
+        .logo {
+            height: 80px;
+            margin-right: 20px;
+        }
+
+        h1, h2 {
+            color: #2c3e50;
+            text-align: center;
+        }
+        
+        h2 {
+            border-bottom: 2px solid #3498db;
+            padding-bottom: 10px;
+            margin-top: 40px;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        
+        th, td {
+            padding: 12px 15px;
+            text-align: left;
+            border: 1px solid #ddd;
+        }
+        
+        th {
+            background-color: #3498db;
+            color: white;
+            font-weight: bold;
+        }
+        
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+        
+        tr:hover {
+            background-color: #e6f7ff;
+        }
+        
+        pre {
+            background-color: #f8f8f8;
+            padding: 10px;
+            border-radius: 5px;
+            overflow-x: auto;
+        }
+        
+        code {
+            background-color: #f8f8f8;
+            padding: 2px 4px;
+            border-radius: 3px;
+            font-family: monospace;
+        }
+        
+        .section {
+            margin-bottom: 40px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Documentación API REST de Mascotas</h1>
+        <div style="margin: 20px 0; text-align: center;">
+            <h3 style="margin-bottom: 5px;">URL de la API:</h3>
+            <p style="margin-top: 0;"><code style="font-size: 1.1em;">http://localhost:3000</code></p>
+        </div>
+        
+        
+        <div class="section">
+            <h2>Autenticación</h2>
+            
+            <!-- Registro de Usuario -->
+            <table>
+                <tbody>
+                    <tr>
+                        <th>Número</th>
+                        <td>1</td>
+                    </tr>
+                    <tr>
+                        <th>Nombre</th>
+                        <td>Registrar Usuario</td>
+                    </tr>
+                    <tr>
+                        <th>Descripción</th>
+                        <td>Permite registrar un nuevo usuario en la base de datos</td>
+                    </tr>
+                    <tr>
+                        <th>URL</th>
+                        <td><code>/register</code></td>
+                    </tr>
+                    <tr>
+                        <th>Método HTTP</th>
+                        <td>POST</td>
+                    </tr>
+                    <tr>
+                        <th>Header</th>
+                        <td>
+                            <strong>Content-Type:</strong> application/json
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>Request</th>
+                        <td>
+                            <pre>
+{
+    "fullname": "Juan Perez",
+    "email": "juan@example.com",
+    "password": "contraseña123"
+}
+                            </pre>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>Response</th>
+                        <td>
+                            <strong>Correcto (201):</strong><br>
+                            <pre>
+{
+    "message": "Usuario registrado exitosamente",
+    "token": "JWT_TOKEN"
+}
+                            </pre>
+                            <strong>Errores:</strong><br>
+                            400 - Campos faltantes o email ya registrado<br>
+                            500 - Error interno del servidor
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            
+            <!-- Login de Usuario -->
+            <table>
+                <tbody>
+                    <tr>
+                        <th>Número</th>
+                        <td>2</td>
+                    </tr>
+                    <tr>
+                        <th>Nombre</th>
+                        <td>Iniciar Sesión</td>
+                    </tr>
+                    <tr>
+                        <th>Descripción</th>
+                        <td>Permite a un usuario iniciar sesión y obtener un token JWT</td>
+                    </tr>
+                    <tr>
+                        <th>URL</th>
+                        <td><code>/login</code></td>
+                    </tr>
+                    <tr>
+                        <th>Método HTTP</th>
+                        <td>POST</td>
+                    </tr>
+                    <tr>
+                        <th>Header</th>
+                        <td>
+                            <strong>Content-Type:</strong> application/json
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>Request</th>
+                        <td>
+                            <pre>
+{
+    "email": "juan@example.com",
+    "password": "contraseña123"
+}
+                            </pre>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>Response</th>
+                        <td>
+                            <strong>Correcto (200):</strong><br>
+                            <pre>
+{
+    "message": "Login exitoso",
+    "token": "JWT_TOKEN"
+}
+                            </pre>
+                            <strong>Errores:</strong><br>
+                            400 - Campos faltantes<br>
+                            401 - Credenciales incorrectas<br>
+                            500 - Error interno del servidor
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        
+        <!-- Sección Mascotas -->
+        <div class="section">
+            <h2>Mascotas</h2>
+            
+            <!-- Obtener todas las mascotas -->
+            <table>
+                <tbody>
+                    <tr>
+                        <th>Número</th>
+                        <td>3</td>
+                    </tr>
+                    <tr>
+                        <th>Nombre</th>
+                        <td>Obtener todas las mascotas</td>
+                    </tr>
+                    <tr>
+                        <th>Descripción</th>
+                        <td>Devuelve una lista de todas las mascotas registradas</td>
+                    </tr>
+                    <tr>
+                        <th>URL</th>
+                        <td><code>/petsKYS</code></td>
+                    </tr>
+                    <tr>
+                        <th>Método HTTP</th>
+                        <td>GET</td>
+                    </tr>
+                    <tr>
+                        <th>Header</th>
+                        <td>
+                            <strong>Authorization:</strong> Bearer (TOKEN)
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>Response</th>
+                        <td>
+                            <strong>Correcto (200):</strong><br>
+                            <pre>
+[
+    {
+        "id": 1,
+        "name": "Firulais",
+        "estado": "porAdoptar",
+        "photo": "pet_123456.jpg",
+        "race": { "name": "Labrador" },
+        "category": { "name": "Perro" },
+        "gender": { "name": "Macho" }
+    },
+    ...
+]
+                            </pre>
+                            <strong>Errores:</strong><br>
+                            401 - No autorizado<br>
+                            500 - Error interno del servidor
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            
+            <!-- Crear mascota -->
+            <table>
+                <tbody>
+                    <tr>
+                        <th>Número</th>
+                        <td>4</td>
+                    </tr>
+                    <tr>
+                        <th>Nombre</th>
+                        <td>Crear mascota</td>
+                    </tr>
+                    <tr>
+                        <th>Descripción</th>
+                        <td>Registra una nueva mascota en el sistema</td>
+                    </tr>
+                    <tr>
+                        <th>URL</th>
+                        <td><code>/petsKYS</code></td>
+                    </tr>
+                    <tr>
+                        <th>Método HTTP</th>
+                        <td>POST</td>
+                    </tr>
+                    <tr>
+                        <th>Header</th>
+                        <td>
+                            <strong>Authorization:</strong> Bearer (TOKEN)<br>
+                            <strong>Content-Type:</strong> multipart/form-data
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>Request</th>
+                        <td>
+                            Campos del formulario:<br>
+                            - name: Nombre de la mascota<br>
+                            - raceId: ID de la raza<br>
+                            - categoryId: ID de la categoría<br>
+                            - genderId: ID del género<br>
+                            - user_Id: ID del usuario<br>
+                            - photo: Archivo de imagen (JPEG, JPG, PNG, GIF)
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>Response</th>
+                        <td>
+                            <strong>Correcto (201):</strong><br>
+                            Devuelve la mascota creada con sus relaciones<br>
+                            <strong>Errores:</strong><br>
+                            400 - Campos faltantes o foto no proporcionada<br>
+                            401 - No autorizado<br>
+                            500 - Error interno del servidor
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            
+            <!-- Actualizar mascota -->
+            <table>
+                <tbody>
+                    <tr>
+                        <th>Número</th>
+                        <td>5</td>
+                    </tr>
+                    <tr>
+                        <th>Nombre</th>
+                        <td>Actualizar mascota</td>
+                    </tr>
+                    <tr>
+                        <th>Descripción</th>
+                        <td>Actualiza los datos de una mascota existente</td>
+                    </tr>
+                    <tr>
+                        <th>URL</th>
+                        <td><code>/petsKYS/:id</code></td>
+                    </tr>
+                    <tr>
+                        <th>Método HTTP</th>
+                        <td>PUT</td>
+                    </tr>
+                    <tr>
+                        <th>Header</th>
+                        <td>
+                            <strong>Authorization:</strong> Bearer (TOKEN)<br>
+                            <strong>Content-Type:</strong> multipart/form-data
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>Request</th>
+                        <td>
+                            Campos del formulario (opcionales):<br>
+                            - name: Nombre de la mascota<br>
+                            - raceId: ID de la raza<br>
+                            - categoryId: ID de la categoría<br>
+                            - genderId: ID del género<br>
+                            - estado: Estado (Adoptado/porAdoptar)<br>
+                            - photo: Nueva foto (JPEG, JPG, PNG, GIF)
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>Response</th>
+                        <td>
+                            <strong>Correcto (200):</strong><br>
+                            Devuelve la mascota actualizada con sus relaciones<br>
+                            <strong>Errores:</strong><br>
+                            400 - Campos inválidos<br>
+                            401 - No autorizado<br>
+                            404 - Mascota no encontrada<br>
+                            500 - Error interno del servidor
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            
+            <!-- Eliminar mascota -->
+            <table>
+                <tbody>
+                    <tr>
+                        <th>Número</th>
+                        <td>6</td>
+                    </tr>
+                    <tr>
+                        <th>Nombre</th>
+                        <td>Eliminar mascota</td>
+                    </tr>
+                    <tr>
+                        <th>Descripción</th>
+                        <td>Elimina una mascota del sistema</td>
+                    </tr>
+                    <tr>
+                        <th>URL</th>
+                        <td><code>/petsKYS/:id</code></td>
+                    </tr>
+                    <tr>
+                        <th>Método HTTP</th>
+                        <td>DELETE</td>
+                    </tr>
+                    <tr>
+                        <th>Header</th>
+                        <td>
+                            <strong>Authorization:</strong> Bearer (TOKEN)
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>Response</th>
+                        <td>
+                            <strong>Correcto (200):</strong><br>
+                            { "message": "Mascota eliminada" }<br>
+                            <strong>Errores:</strong><br>
+                            401 - No autorizado<br>
+                            404 - Mascota no encontrada<br>
+                            500 - Error interno del servidor
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            
+            <!-- Reportes de mascotas -->
+            <table>
+                <tbody>
+                    <tr>
+                        <th>Número</th>
+                        <td>7</td>
+                    </tr>
+                    <tr>
+                        <th>Nombre</th>
+                        <td>Reporte por estado</td>
+                    </tr>
+                    <tr>
+                        <th>Descripción</th>
+                        <td>Devuelve un reporte de mascotas agrupadas por estado</td>
+                    </tr>
+                    <tr>
+                        <th>URL</th>
+                        <td><code>/petsKYS/reportes/estado</code></td>
+                    </tr>
+                    <tr>
+                        <th>Método HTTP</th>
+                        <td>GET</td>
+                    </tr>
+                    <tr>
+                        <th>Header</th>
+                        <td>
+                            <strong>Authorization:</strong> Bearer (TOKEN)
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>Response</th>
+                        <td>
+                            <strong>Correcto (200):</strong><br>
+                            <pre>
+[
+    { "estado": "Adoptado", "cantidad": 5 },
+    { "estado": "porAdoptar", "cantidad": 10 }
+]
+                            </pre>
+                            <strong>Errores:</strong><br>
+                            401 - No autorizado<br>
+                            500 - Error interno del servidor
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        
+        <!-- Sección Razas -->
+        <div class="section">
+            <h2>Razas</h2>
+            
+            <!-- Obtener todas las razas -->
+            <table>
+                <tbody>
+                    <tr>
+                        <th>Número</th>
+                        <td>8</td>
+                    </tr>
+                    <tr>
+                        <th>Nombre</th>
+                        <td>Obtener todas las razas</td>
+                    </tr>
+                    <tr>
+                        <th>Descripción</th>
+                        <td>Devuelve una lista de todas las razas registradas</td>
+                    </tr>
+                    <tr>
+                        <th>URL</th>
+                        <td><code>/raceKYS</code></td>
+                    </tr>
+                    <tr>
+                        <th>Método HTTP</th>
+                        <td>GET</td>
+                    </tr>
+                    <tr>
+                        <th>Header</th>
+                        <td>
+                            <strong>Authorization:</strong> Bearer (TOKEN)
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>Response</th>
+                        <td>
+                            <strong>Correcto (200):</strong><br>
+                            <pre>
+[
+    { "id": 1, "name": "Labrador" },
+    { "id": 2, "name": "Persa" },
+    ...
+]
+                            </pre>
+                            <strong>Errores:</strong><br>
+                            401 - No autorizado<br>
+                            500 - Error interno del servidor
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            
+            <!-- Crear raza -->
+            <table>
+                <tbody>
+                    <tr>
+                        <th>Número</th>
+                        <td>9</td>
+                    </tr>
+                    <tr>
+                        <th>Nombre</th>
+                        <td>Crear raza</td>
+                    </tr>
+                    <tr>
+                        <th>Descripción</th>
+                        <td>Registra una nueva raza en el sistema</td>
+                    </tr>
+                    <tr>
+                        <th>URL</th>
+                        <td><code>/raceKYS</code></td>
+                    </tr>
+                    <tr>
+                        <th>Método HTTP</th>
+                        <td>POST</td>
+                    </tr>
+                    <tr>
+                        <th>Header</th>
+                        <td>
+                            <strong>Authorization:</strong> Bearer (TOKEN)<br>
+                            <strong>Content-Type:</strong> application/json
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>Request</th>
+                        <td>
+                            <pre>
+{
+    "name": "Siamés"
+}
+                            </pre>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>Response</th>
+                        <td>
+                            <strong>Correcto (201):</strong><br>
+                            Devuelve la raza creada<br>
+                            <strong>Errores:</strong><br>
+                            400 - Campos faltantes<br>
+                            401 - No autorizado<br>
+                            500 - Error interno del servidor
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <!-- Sección Razas - Actualizar raza -->
+<table>
+    <tbody>
+        <tr>
+            <th>Número</th>
+            <td>10</td>
+        </tr>
+        <tr>
+            <th>Nombre</th>
+            <td>Actualizar raza</td>
+        </tr>
+        <tr>
+            <th>Descripción</th>
+            <td>Actualiza los datos de una raza existente</td>
+        </tr>
+        <tr>
+            <th>URL</th>
+            <td><code>/raceKYS/:id</code></td>
+        </tr>
+        <tr>
+            <th>Método HTTP</th>
+            <td>PUT</td>
+        </tr>
+        <tr>
+            <th>Header</th>
+            <td>
+                <strong>Authorization:</strong> Bearer (TOKEN)<br>
+                <strong>Content-Type:</strong> application/json
+            </td>
+        </tr>
+        <tr>
+            <th>Request</th>
+            <td>
+                <pre>
+{
+    "name": "Labrador Retriever"
+}
+                </pre>
+            </td>
+        </tr>
+        <tr>
+            <th>Response</th>
+            <td>
+                <strong>Correcto (200):</strong><br>
+                <pre>
+{
+    "id": 1,
+    "name": "Labrador Retriever"
+}
+                </pre>
+                <strong>Errores:</strong><br>
+                400 - Campos faltantes<br>
+                401 - No autorizado<br>
+                404 - Raza no encontrada<br>
+                500 - Error interno del servidor
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+<!-- Sección Razas - Eliminar raza -->
+<table>
+    <tbody>
+        <tr>
+            <th>Número</th>
+            <td>11</td>
+        </tr>
+        <tr>
+            <th>Nombre</th>
+            <td>Eliminar raza</td>
+        </tr>
+        <tr>
+            <th>Descripción</th>
+            <td>Elimina una raza del sistema</td>
+        </tr>
+        <tr>
+            <th>URL</th>
+            <td><code>/raceKYS/:id</code></td>
+        </tr>
+        <tr>
+            <th>Método HTTP</th>
+            <td>DELETE</td>
+        </tr>
+        <tr>
+            <th>Header</th>
+            <td>
+                <strong>Authorization:</strong> Bearer (TOKEN)
+            </td>
+        </tr>
+        <tr>
+            <th>Response</th>
+            <td>
+                <strong>Correcto (200):</strong><br>
+                { "message": "Raza eliminada" }<br>
+                <strong>Errores:</strong><br>
+                401 - No autorizado<br>
+                404 - Raza no encontrada<br>
+                500 - Error interno del servidor
+            </td>
+        </tr>
+    </tbody>
+</table>
+        
+        <!-- Sección Categorías -->
+        <div class="section">
+            <h2>Categorías</h2>
+            
+            <!-- Obtener todas las categorías -->
+            <table>
+                <tbody>
+                    <tr>
+                        <th>Número</th>
+                        <td>12</td>
+                    </tr>
+                    <tr>
+                        <th>Nombre</th>
+                        <td>Obtener todas las categorías</td>
+                    </tr>
+                    <tr>
+                        <th>Descripción</th>
+                        <td>Devuelve una lista de todas las categorías registradas</td>
+                    </tr>
+                    <tr>
+                        <th>URL</th>
+                        <td><code>/categoryKYS</code></td>
+                    </tr>
+                    <tr>
+                        <th>Método HTTP</th>
+                        <td>GET</td>
+                    </tr>
+                    <tr>
+                        <th>Header</th>
+                        <td>
+                            <strong>Authorization:</strong> Bearer (TOKEN)
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>Response</th>
+                        <td>
+                            <strong>Correcto (200):</strong><br>
+                            <pre>
+[
+    { "id": 1, "name": "Perro" },
+    { "id": 2, "name": "Gato" },
+    ...
+]
+                            </pre>
+                            <strong>Errores:</strong><br>
+                            401 - No autorizado<br>
+                            500 - Error interno del servidor
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <!-- Sección Categorías - Crear categoría -->
+<table>
+    <tbody>
+        <tr>
+            <th>Número</th>
+            <td>13</td>
+        </tr>
+        <tr>
+            <th>Nombre</th>
+            <td>Crear categoría</td>
+        </tr>
+        <tr>
+            <th>Descripción</th>
+            <td>Registra una nueva categoría en el sistema</td>
+        </tr>
+        <tr>
+            <th>URL</th>
+            <td><code>/categoryKYS</code></td>
+        </tr>
+        <tr>
+            <th>Método HTTP</th>
+            <td>POST</td>
+        </tr>
+        <tr>
+            <th>Header</th>
+            <td>
+                <strong>Authorization:</strong> Bearer (TOKEN)<br>
+                <strong>Content-Type:</strong> application/json
+            </td>
+        </tr>
+        <tr>
+            <th>Request</th>
+            <td>
+                <pre>
+{
+    "name": "Aves"
+}
+                </pre>
+            </td>
+        </tr>
+        <tr>
+            <th>Response</th>
+            <td>
+                <strong>Correcto (201):</strong><br>
+                <pre>
+{
+    "id": 3,
+    "name": "Aves"
+}
+                </pre>
+                <strong>Errores:</strong><br>
+                400 - Campos faltantes<br>
+                401 - No autorizado<br>
+                500 - Error interno del servidor
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+<!-- Sección Categorías - Actualizar categoría -->
+<table>
+    <tbody>
+        <tr>
+            <th>Número</th>
+            <td>14</td>
+        </tr>
+        <tr>
+            <th>Nombre</th>
+            <td>Actualizar categoría</td>
+        </tr>
+        <tr>
+            <th>Descripción</th>
+            <td>Actualiza los datos de una categoría existente</td>
+        </tr>
+        <tr>
+            <th>URL</th>
+            <td><code>/categoryKYS/:id</code></td>
+        </tr>
+        <tr>
+            <th>Método HTTP</th>
+            <td>PUT</td>
+        </tr>
+        <tr>
+            <th>Header</th>
+            <td>
+                <strong>Authorization:</strong> Bearer (TOKEN)<br>
+                <strong>Content-Type:</strong> application/json
+            </td>
+        </tr>
+        <tr>
+            <th>Request</th>
+            <td>
+                <pre>
+{
+    "name": "Pájaros"
+}
+                </pre>
+            </td>
+        </tr>
+        <tr>
+            <th>Response</th>
+            <td>
+                <strong>Correcto (200):</strong><br>
+                <pre>
+{
+    "id": 3,
+    "name": "Pájaros"
+}
+                </pre>
+                <strong>Errores:</strong><br>
+                400 - Campos faltantes<br>
+                401 - No autorizado<br>
+                404 - Categoría no encontrada<br>
+                500 - Error interno del servidor
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+<!-- Sección Categorías - Eliminar categoría -->
+<table>
+    <tbody>
+        <tr>
+            <th>Número</th>
+            <td>15</td>
+        </tr>
+        <tr>
+            <th>Nombre</th>
+            <td>Eliminar categoría</td>
+        </tr>
+        <tr>
+            <th>Descripción</th>
+            <td>Elimina una categoría del sistema</td>
+        </tr>
+        <tr>
+            <th>URL</th>
+            <td><code>/categoryKYS/:id</code></td>
+        </tr>
+        <tr>
+            <th>Método HTTP</th>
+            <td>DELETE</td>
+        </tr>
+        <tr>
+            <th>Header</th>
+            <td>
+                <strong>Authorization:</strong> Bearer (TOKEN)
+            </td>
+        </tr>
+        <tr>
+            <th>Response</th>
+            <td>
+                <strong>Correcto (200):</strong><br>
+                { "message": "Categoría eliminada" }<br>
+                <strong>Errores:</strong><br>
+                401 - No autorizado<br>
+                404 - Categoría no encontrada<br>
+                500 - Error interno del servidor
+            </td>
+        </tr>
+    </tbody>
+</table>
+        <!-- Sección Géneros -->
+        <div class="section">
+            <h2>Géneros</h2>
+            
+            <!-- Obtener todos los géneros -->
+            <table>
+                <tbody>
+                    <tr>
+                        <th>Número</th>
+                        <td>16</td>
+                    </tr>
+                    <tr>
+                        <th>Nombre</th>
+                        <td>Obtener todos los géneros</td>
+                    </tr>
+                    <tr>
+                        <th>Descripción</th>
+                        <td>Devuelve una lista de todos los géneros registrados</td>
+                    </tr>
+                    <tr>
+                        <th>URL</th>
+                        <td><code>/genderKYS</code></td>
+                    </tr>
+                    <tr>
+                        <th>Método HTTP</th>
+                        <td>GET</td>
+                    </tr>
+                    <tr>
+                        <th>Header</th>
+                        <td>
+                            <strong>Authorization:</strong> Bearer (TOKEN)
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>Response</th>
+                        <td>
+                            <strong>Correcto (200):</strong><br>
+                            <pre>
+[
+    { "id": 1, "name": "Macho" },
+    { "id": 2, "name": "Hembra" }
+]
+                            </pre>
+                            <strong>Errores:</strong><br>
+                            401 - No autorizado<br>
+                            500 - Error interno del servidor
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <!-- Sección Géneros - Crear género -->
+<table>
+    <tbody>
+        <tr>
+            <th>Número</th>
+            <td>17</td>
+        </tr>
+        <tr>
+            <th>Nombre</th>
+            <td>Crear género</td>
+        </tr>
+        <tr>
+            <th>Descripción</th>
+            <td>Registra un nuevo género en el sistema</td>
+        </tr>
+        <tr>
+            <th>URL</th>
+            <td><code>/genderKYS</code></td>
+        </tr>
+        <tr>
+            <th>Método HTTP</th>
+            <td>POST</td>
+        </tr>
+        <tr>
+            <th>Header</th>
+            <td>
+                <strong>Authorization:</strong> Bearer (TOKEN)<br>
+                <strong>Content-Type:</strong> application/json
+            </td>
+        </tr>
+        <tr>
+            <th>Request</th>
+            <td>
+                <pre>
+{
+    "name": "Indeterminado"
+}
+                </pre>
+            </td>
+        </tr>
+        <tr>
+            <th>Response</th>
+            <td>
+                <strong>Correcto (201):</strong><br>
+                <pre>
+{
+    "id": 3,
+    "name": "Indeterminado"
+}
+                </pre>
+                <strong>Errores:</strong><br>
+                400 - Campos faltantes<br>
+                401 - No autorizado<br>
+                500 - Error interno del servidor
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+<!-- Sección Géneros - Actualizar género -->
+<table>
+    <tbody>
+        <tr>
+            <th>Número</th>
+            <td>18</td>
+        </tr>
+        <tr>
+            <th>Nombre</th>
+            <td>Actualizar género</td>
+        </tr>
+        <tr>
+            <th>Descripción</th>
+            <td>Actualiza los datos de un género existente</td>
+        </tr>
+        <tr>
+            <th>URL</th>
+            <td><code>/genderKYS/:id</code></td>
+        </tr>
+        <tr>
+            <th>Método HTTP</th>
+            <td>PUT</td>
+        </tr>
+        <tr>
+            <th>Header</th>
+            <td>
+                <strong>Authorization:</strong> Bearer (TOKEN)<br>
+                <strong>Content-Type:</strong> application/json
+            </td>
+        </tr>
+        <tr>
+            <th>Request</th>
+            <td>
+                <pre>
+{
+    "name": "No definido"
+}
+                </pre>
+            </td>
+        </tr>
+        <tr>
+            <th>Response</th>
+            <td>
+                <strong>Correcto (200):</strong><br>
+                <pre>
+{
+    "id": 3,
+    "name": "No definido"
+}
+                </pre>
+                <strong>Errores:</strong><br>
+                400 - Campos faltantes<br>
+                401 - No autorizado<br>
+                404 - Género no encontrado<br>
+                500 - Error interno del servidor
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+<!-- Sección Géneros - Eliminar género -->
+<table>
+    <tbody>
+        <tr>
+            <th>Número</th>
+            <td>19</td>
+        </tr>
+        <tr>
+            <th>Nombre</th>
+            <td>Eliminar género</td>
+        </tr>
+        <tr>
+            <th>Descripción</th>
+            <td>Elimina un género del sistema</td>
+        </tr>
+        <tr>
+            <th>URL</th>
+            <td><code>/genderKYS/:id</code></td>
+        </tr>
+        <tr>
+            <th>Método HTTP</th>
+            <td>DELETE</td>
+        </tr>
+        <tr>
+            <th>Header</th>
+            <td>
+                <strong>Authorization:</strong> Bearer (TOKEN)
+            </td>
+        </tr>
+        <tr>
+            <th>Response</th>
+            <td>
+                <strong>Correcto (200):</strong><br>
+                { "message": "Género eliminado" }<br>
+                <strong>Errores:</strong><br>
+                401 - No autorizado<br>
+                404 - Género no encontrado<br>
+                500 - Error interno del servidor
+            </td>
+        </tr>
+    </tbody>
+</table>
+        
+        <!-- Sección Clientes -->
+        <div class="section">
+            <h2>Clientes</h2>
+            
+            <!-- Obtener todos los clientes -->
+            <table>
+                <tbody>
+                    <tr>
+                        <th>Número</th>
+                        <td>20</td>
+                    </tr>
+                    <tr>
+                        <th>Nombre</th>
+                        <td>Obtener todos los clientes</td>
+                    </tr>
+                    <tr>
+                        <th>Descripción</th>
+                        <td>Devuelve una lista de todos los clientes registrados</td>
+                    </tr>
+                    <tr>
+                        <th>URL</th>
+                        <td><code>/clientesKYS</code></td>
+                    </tr>
+                    <tr>
+                        <th>Método HTTP</th>
+                        <td>GET</td>
+                    </tr>
+                    <tr>
+                        <th>Response</th>
+                        <td>
+                            <strong>Correcto (200):</strong><br>
+                            <pre>
+[
+    {
+        "id": 1,
+        "fullname": "Juan Perez",
+        "email": "juan@example.com"
+    },
+    ...
+]
+                            </pre>
+                            <strong>Errores:</strong><br>
+                            500 - Error interno del servidor
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <!-- Sección Clientes - Crear cliente -->
+<table>
+    <tbody>
+        <tr>
+            <th>Número</th>
+            <td>21</td>
+        </tr>
+        <tr>
+            <th>Nombre</th>
+            <td>Crear cliente</td>
+        </tr>
+        <tr>
+            <th>Descripción</th>
+            <td>Registra un nuevo cliente en el sistema</td>
+        </tr>
+        <tr>
+            <th>URL</th>
+            <td><code>/clientesKYS</code></td>
+        </tr>
+        <tr>
+            <th>Método HTTP</th>
+            <td>POST</td>
+        </tr>
+        <tr>
+            <th>Header</th>
+            <td>
+                <strong>Content-Type:</strong> application/json
+            </td>
+        </tr>
+        <tr>
+            <th>Request</th>
+            <td>
+                <pre>
+{
+    "fullname": "María González",
+    "email": "maria@example.com",
+    "password": "contraseñaSegura123"
+}
+                </pre>
+            </td>
+        </tr>
+        <tr>
+            <th>Response</th>
+            <td>
+                <strong>Correcto (201):</strong><br>
+                <pre>
+{
+    "id": 2,
+    "fullname": "María González",
+    "email": "maria@example.com"
+}
+                </pre>
+                <strong>Errores:</strong><br>
+                400 - Campos faltantes o email ya registrado<br>
+                500 - Error interno del servidor
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+<!-- Sección Clientes - Actualizar cliente -->
+<table>
+    <tbody>
+        <tr>
+            <th>Número</th>
+            <td>22</td>
+        </tr>
+        <tr>
+            <th>Nombre</th>
+            <td>Actualizar cliente</td>
+        </tr>
+        <tr>
+            <th>Descripción</th>
+            <td>Actualiza los datos de un cliente existente</td>
+        </tr>
+        <tr>
+            <th>URL</th>
+            <td><code>/clientesKYS/:id</code></td>
+        </tr>
+        <tr>
+            <th>Método HTTP</th>
+            <td>PUT</td>
+        </tr>
+        <tr>
+            <th>Header</th>
+            <td>
+                <strong>Authorization:</strong> Bearer (TOKEN)<br>
+                <strong>Content-Type:</strong> application/json
+            </td>
+        </tr>
+        <tr>
+            <th>Request</th>
+            <td>
+                <pre>
+{
+    "fullname": "María González Pérez",
+    "email": "maria.g@example.com"
+}
+                </pre>
+            </td>
+        </tr>
+        <tr>
+            <th>Response</th>
+            <td>
+                <strong>Correcto (200):</strong><br>
+                <pre>
+{
+    "id": 2,
+    "fullname": "María González Pérez",
+    "email": "maria.g@example.com"
+}
+                </pre>
+                <strong>Errores:</strong><br>
+                400 - Campos faltantes<br>
+                401 - No autorizado<br>
+                404 - Cliente no encontrado<br>
+                500 - Error interno del servidor
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+<!-- Sección Clientes - Eliminar cliente -->
+<table>
+    <tbody>
+        <tr>
+            <th>Número</th>
+            <td>23</td>
+        </tr>
+        <tr>
+            <th>Nombre</th>
+            <td>Eliminar cliente</td>
+        </tr>
+        <tr>
+            <th>Descripción</th>
+            <td>Elimina un cliente del sistema</td>
+        </tr>
+        <tr>
+            <th>URL</th>
+            <td><code>/clientesKYS/:id</code></td>
+        </tr>
+        <tr>
+            <th>Método HTTP</th>
+            <td>DELETE</td>
+        </tr>
+        <tr>
+            <th>Header</th>
+            <td>
+                <strong>Authorization:</strong> Bearer (TOKEN)
+            </td>
+        </tr>
+        <tr>
+            <th>Response</th>
+            <td>
+                <strong>Correcto (200):</strong><br>
+                { "message": "Cliente eliminado" }<br>
+                <strong>Errores:</strong><br>
+                401 - No autorizado<br>
+                404 - Cliente no encontrado<br>
+                500 - Error interno del servidor
+            </td>
+        </tr>
+    </tbody>
+</table>
+    </div>
+</body>
+</html>

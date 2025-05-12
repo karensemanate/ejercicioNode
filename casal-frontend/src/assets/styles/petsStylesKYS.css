@@ -1,0 +1,162 @@
+body, html {
+  font-family: 'Arial', sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  padding: 20px;
+  background-image: url('../images/imgs/bg.svg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+
+.pets-header-KYS {
+  width: 100%;
+  display: flex;
+  justify-content: center; 
+  align-items: center; 
+  margin-bottom: 20px;
+  font: message-box;
+}
+
+.pets-header-KYS h1 {
+  font-size: 22px;
+  color: #ffffff;
+  margin: 0;
+  text-align: center;
+  font-family: "Segoe UI";
+}
+
+.header-actions-KYS {
+  display: flex;
+  gap: 12px;
+}
+
+.add-pet-btn-KYS,
+.logout-btn-KYS {
+  padding: 8px 14px;
+  border: none;
+  border-radius: 6px;
+  font-size: 14px;
+  cursor: pointer;
+  text-decoration: none;
+  transition: 0.3s ease;
+}
+
+.adicionar-mascota-KYS {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.add-pet-btn-KYS {
+  background-color: #59c78d;
+  color: white;
+  padding: 6px 40px;
+  border-radius: 9999px;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  font-weight: 500;
+  font-size: 18px;
+  min-width: 250px;
+  justify-content: center;
+  transition: background-color 0.3s ease;
+}
+
+.add-pet-btn-KYS:hover {
+  background-color: #4db17e;
+}
+
+.add-pet-btn-KYS .icon {
+  font-size: 22px;
+  margin-right: 10px;
+  font-weight: bold;
+}
+
+.logout-btn-KYS {
+  background-color: #dc3545;
+  color: white;
+}
+
+.logout-btn-KYS:hover {
+  background-color: #c82333;
+}
+
+.pets-list-KYS {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 20px;
+}
+
+.pet-card-KYS {
+  background-color: #aab3c9; 
+  border-radius: 15px;
+  display: flex;
+  align-items: center;
+  padding: 10px 20px;
+  gap: 15px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.pet-image-KYS {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid #fff;
+}
+
+.pet-info-KYS {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.pet-name-KYS {
+  font-size: 18px;
+  font-weight: 600;
+  color: #3a4a6d;
+  font-family: 'Segoe UI';
+}
+
+.pet-breed-KYS {
+  font-size: 14px;
+  color: #6f7a91;
+  font-family: 'Segoe UI';
+}
+
+.pet-actions-KYS {
+  display: flex;
+  gap: 8px; 
+  align-items: center;
+}
+
+.action-btn-KYS {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: none;
+  background-color: transparent;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 6px; 
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.action-btn-KYS:hover {
+  transform: scale(1.1);
+}
+
+.icon-img-KYS {
+  width: 20px; 
+  height: 20px;
+  object-fit: contain;
+}
+
+

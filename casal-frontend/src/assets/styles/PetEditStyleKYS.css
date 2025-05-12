@@ -1,0 +1,77 @@
+.pet-form-container-KYS {
+  width: 100%;
+  max-width: 500px;
+  margin: 0 auto;
+  padding: 20px;
+  font-family: Arial, sans-serif;
+}
+
+.pet-image-KYS {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid #fff;
+  display: block;
+  margin: 0 auto 20px;
+}
+
+.form-group-KYS {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 16px;
+  min-height: 50px;
+}
+
+.form-group-KYS input,
+.form-group-KYS select {
+  width: 100%;
+  background: transparent;
+  border: none;
+  outline: none;
+  font-size: 16px;
+  color: rgb(76, 74, 74);
+  padding: 12px 0;
+  text-align: left;
+}
+
+.submit-btn-KYS {
+  width: 100%;
+  padding: 12px 20px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 9999px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s;
+}
+
+@media (max-width: 600px) {
+  .pet-form-container-KYS {
+    padding: 15px;
+  }
+  
+  .pet-form-container-KYS h1 {
+    font-size: 20px;
+  }
+
+  .form-group-KYS {
+    padding: 0 12px;
+    min-height: 45px;
+  }
+  
+  .icon-img-KYS {
+    width: 20px;
+    height: 20px;
+    margin-left: 8px;
+  }
+  
+  .form-group-KYS input,
+  .form-group-KYS select {
+    font-size: 14px;
+    padding: 10px 0;
+  }
+}
